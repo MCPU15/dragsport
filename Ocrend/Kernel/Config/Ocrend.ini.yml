@@ -1,0 +1,95 @@
+# This file is part of the Ocrend Framewok 3 package.
+#
+# (c) Ocrend Software <info@ocrend.com>
+#
+# For the full copyright and license information, please view the LICENS
+# file that was distributed with this source code.
+
+# Configuración de la base de datos
+database:
+  default_driver: mysql
+  drivers:
+    mysql: 
+      host: localhost
+      user: root
+      pass:
+      name: dragsport
+      port: default
+      socket: default
+    sqlite3:
+      file: '___ROOT___Ocrend/Kernel/Database/Drivers/Sqlite/db.sqlite3'
+      
+# Configuración de servidor SMTP
+mailer:
+  host: smtp.gmail.com
+  user: noreply.dev.ocrend.software@gmail.com
+  pass: ZZROX1A2-*R/T7AX7T
+  port: 587 
+  logo: https://waipay.io/assets/waipay/logo/logomail.png
+
+# Configuración de twig
+twig:
+  cache: false
+  compiled_dir: ./app/templates/.compiled/
+  charset: UTF-8
+  strict_variables: false
+  autoescape: html
+
+
+# Configuración api facebook
+facebook:
+  app_id: 364400100982586
+  app_secret: 2215a5452465d222cdb23c3a828aa641
+  default_graph_version: v3.2
+
+# Configuración api Twitch
+twitch:
+  client_id: nionyeaipt5w1mjm9q1rf1qbuk5w3v
+  client_secret: ufk81wgxlnyxgx3rjzk4s83sxtx1vk
+  redirect_url: http://localhost/dragsport/start/tc
+  token_url: https://api.twitch.tv/kraken/oauth2/token
+  user_url: https://api.twitch.tv/kraken/user
+
+# Configuración api Spotify
+spotify:
+  client_id: c5220154169e4085aadfad21dec009dc
+  client_secret: d9e3650899a846368acbfbd9a96cb4f5
+  redirect_url: http://localhost/dragsport/musicplaylist/login
+
+# Configuración api Twitter
+twitter:
+  consumer_key: XV14Bg6HlqKRQW8oZuengtkvD
+  consumer_secret: iMUnssxiGmSa3EnezhkKYadmhQe6o93DbfYdPZc8TkRAlcvr4E
+  redirect_url: http://localhost/dragsport/start/tw
+
+# Configuración api Shopify
+shopify:
+  api_key: c0d24b345bbd965d04518d4f586820b0
+  password: 0205ed8d4b75192bb262c758836ff2c3
+  shop: teststoreapi123.myshopify.com
+  
+# Configuración del sitio
+build:
+  production: false
+  name: Dragsport
+  url: http://localhost/dragsport/
+  timezone: America/La_Paz
+  version: 3.0.1
+ 
+# Configuración de cookies
+sessions:
+  lifetime: 3600
+  user_cookie:
+    enable: true
+    key_encrypt: X8f3p@9Vde0WvKauzI8C
+    lifetime: 3600
+
+# Configuración de la api
+api:
+  active: true
+  origin: '*'
+
+# Configuración de ruta
+router:
+  ssl: false
+  path: localhost/dragsport/

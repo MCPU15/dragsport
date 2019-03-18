@@ -1,0 +1,85 @@
+{% extends 'overall/layout' %}
+
+{% block appHeader %}
+<link rel="stylesheet" href="assets/admin/global/vendor/datatables-bootstrap/dataTables.bootstrap.css">
+<link rel="stylesheet" href="assets/admin/global/vendor/datatables-responsive/dataTables.responsive.css">
+<link rel="stylesheet" href="assets/admin/assets/examples/css/tables/datatable.css">
+{% endblock %}
+
+{% block appBody %}
+  <div class="page">
+    <div class="page-header">
+      <h1 class="page-title">Administradores</h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="dashboard/">Escritorio</a></li>
+        <li class="breadcrumb-item active">Ver Todos</li>
+      </ol>
+    </div>
+    <div class="page-content">
+      <div class="panel">
+        <header class="panel-heading">
+          <div class="panel-actions"></div>
+          <h3 class="panel-title">Administradores - Listado</h3>
+        </header>
+        <div class="panel-body">
+
+          <table class="datatable-ajax table table-hover dataTable table-striped w-full" data-plugin="dataTable">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Fecha nacimiento</th>
+                <th>Género</th>
+                <th>Fecha Registro</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Fecha nacimiento</th>
+                <th>Género</th>
+                <th>Fecha Registro</th>
+                <th>Acciones</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              {% set gender = { male: 'Masculino', female: 'Femenino' } %}
+              {% for d in data if false != data %}
+              <tr>
+                <td>{{ d.first_name }}</td>
+                <td>{{ d.last_name }}</td>
+                <td>{{ d.email }}</td>
+                <td>{{ d.birthdate|date('d/m/Y') }}</td>
+                <td>{{ gender[d.gender] }}</td>
+                <td>{{ d.created_at|date('d/m/Y - H:i:s') }}</td>
+                <td>
+                  <a href="admins/edit/{{ d.id_user }}" class="btn btn-sm btn-icon btn-pure btn-success on-default edit-row" data-toggle="tooltip" data-original-title="Editar"><i class="icon wb-edit" aria-hidden="true"></i></a>
+                  {% if owner_user.id_user != d.id_user %}
+                  <a onclick="deleteElement('admins',{{ d.id_user }})" class="pointer btn btn-sm btn-icon btn-pure btn-danger on-default remove-row" data-toggle="tooltip" data-original-title="Eliminar"><i class="icon wb-trash" aria-hidden="true"></i></a>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="col-xs-12 mt-10">
+            <a href="admins/create" class="btn btn-primary"><i class="wb-plus"></i> Crear Nuevo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block appFooter %}
+<script src="assets/admin/global/vendor/datatables/jquery.dataTables.js"></script>
+<script src="assets/admin/global/vendor/datatables-bootstrap/dataTables.bootstrap.js"></script>
+<script src="assets/admin/global/vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script src="assets/admin/global/js/Plugin/datatables.js"></script>
+<script src="assets/admin/assets/examples/js/tables/datatable.js"></script>
+
+{% endblock %}
